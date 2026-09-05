@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  saurabhkurjekar.com  —  personal site
+  ============================================================================
+
+  BEFORE YOU DEPLOY, EDIT THESE (search for "TODO"):
+
+  1. Property count + market list  — currently says 11 doors / 4 markets
+  2. Contact email                 — currently saurabhkurjekar234@gmail.com
+  3. Twitter/X handle              — link is commented out; add or delete
+  4. The "Writing" section         — three placeholder entries, replace with
+                                     real posts as you publish them
+  5. Any return figures            — this file deliberately contains NO
+                                     financial returns. Add only numbers you
+                                     can defend in a due-diligence call.
+
+  DEPLOY:
+    git init && git add -A && git commit -m "Personal site"
+    git remote add origin https://github.com/skurjekar/investor-profile.git
+    git push -u origin main
+    Then: repo Settings -> Pages -> Source: main branch, / (root)
+    Then: point saurabhkurjekar.com at it via a CNAME file + DNS.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saurabh Kurjekar — Data Science &amp; Real Estate</title>
+<meta name="description" content="Senior Data Scientist at Meta. Eleven-door real estate portfolio across four markets. I underwrite houses the way I build models — with evidence instead of narrative.">
+<meta property="og:title" content="Saurabh Kurjekar">
+<meta property="og:description" content="Data science at Meta. Eleven doors across four markets. I write about housing data, and show my numbers.">
+<meta property="og:type" content="profile">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#1a1a1a;
+  --bg-card:#212121;
+  --bg-elevated:#282828;
+  --accent:#c9a96e;
+  --accent-dim:rgba(201,169,110,.15);
+  --text:#ece8e2;
+  --text-secondary:#b5b0a8;
+  --text-muted:#7d7872;
+  --border:#353230;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  --maxw:1080px;
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+.kicker{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--accent);
+}
+
+/* ---------- nav ---------- */
+.topnav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(26,26,26,.9);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.topnav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.topnav-name{font-family:var(--serif);font-size:17px;font-weight:500;color:var(--text)}
+.topnav-name a{color:inherit}
+.topnav-name a:hover{text-decoration:none;color:var(--accent)}
+.topnav-links{display:flex;gap:22px;font-size:14px;flex-wrap:wrap}
+.topnav-links a{color:var(--text-secondary)}
+.topnav-links a:hover{color:var(--accent);text-decoration:none}
+@media(max-width:620px){.topnav-links{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding:86px 0 66px;border-bottom:1px solid var(--border)}
+.hero-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:64px;align-items:center}
+@media(max-width:860px){
+  .hero{padding:56px 0 44px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-photo-wrap{order:-1;max-width:230px}
+}
+h1{
+  font-family:var(--serif);font-size:clamp(42px,6.5vw,68px);font-weight:500;
+  line-height:1.05;letter-spacing:-.015em;margin:26px 0 24px;text-wrap:balance;
+}
+.hero-lead{
+  font-size:20px;font-weight:300;line-height:1.65;color:var(--text-secondary);
+  max-width:52ch;margin-bottom:14px;
+}
+.hero-lead strong{color:var(--text);font-weight:500}
+.hero-sub{font-size:16px;color:var(--text-muted);max-width:54ch;margin-bottom:34px}
+
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:30px}
+.btn{
+  font-family:var(--sans);font-size:14.5px;font-weight:500;
+  padding:13px 24px;border:1px solid var(--accent);
+  display:inline-block;transition:background .25s,color .25s;
+}
+.btn:hover{text-decoration:none}
+.btn-solid{background:var(--accent);color:#1a1a1a}
+.btn-solid:hover{background:#d9bc84}
+.btn-ghost{color:var(--accent);background:transparent}
+.btn-ghost:hover{background:var(--accent-dim)}
+
+.hero-social{display:flex;gap:20px;font-size:14px;font-family:var(--mono)}
+.hero-social a{color:var(--text-muted)}
+.hero-social a:hover{color:var(--accent);text-decoration:none}
+
+.hero-photo-wrap{position:relative;justify-self:center;width:100%;max-width:300px}
+.hero-photo-wrap::before{
+  content:'';position:absolute;inset:-8px;
+  border:1px solid rgba(201,169,110,.22);pointer-events:none;
+}
+.hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 15%;filter:grayscale(18%)}
+
+/* ---------- stats ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--bg);padding:30px 24px}
+.stat-v{
+  font-family:var(--serif);font-size:38px;font-weight:500;color:var(--accent);
+  line-height:1;margin-bottom:8px;font-variant-numeric:tabular-nums;
+}
+.stat-l{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--text-muted);line-height:1.5;
+}
+
+/* ---------- sections ---------- */
+section{padding:78px 0}
+.sec-line{border-top:1px solid var(--border)}
+.sec-head{margin-bottom:38px}
+h2{
+  font-family:var(--serif);font-size:clamp(28px,4vw,40px);font-weight:500;
+  letter-spacing:-.012em;line-height:1.1;margin:14px 0 0;text-wrap:balance;
+}
+.sec-note{font-size:16px;color:var(--text-muted);margin-top:12px;max-width:62ch}
+
+.prose{max-width:66ch}
+.prose p{margin-bottom:19px;color:var(--text-secondary);font-size:17px}
+.prose p strong{color:var(--text);font-weight:500}
+
+/* ---------- about split ---------- */
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:60px;align-items:start}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:36px}}
+.factbox{background:var(--bg-card);border:1px solid var(--border);padding:30px 28px}
+.factbox-t{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:22px;
+}
+.fact-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:18px;
+  padding:11px 0;border-bottom:1px solid var(--border);
+}
+.fact-row:last-child{border-bottom:none;padding-bottom:0}
+.fact-k{font-size:14px;color:var(--text-muted);flex-shrink:0}
+.fact-v{font-size:14px;color:var(--text);font-weight:400;text-align:right}
+
+/* ---------- portfolio ---------- */
+.pf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.pf-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pf-grid{grid-template-columns:1fr}}
+.pf-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  overflow:hidden;transition:border-color .3s;
+}
+.pf-card:hover{border-color:rgba(201,169,110,.35)}
+.pf-img{height:168px;overflow:hidden;background:var(--bg-elevated)}
+.pf-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(22%);transition:filter .4s,transform .4s}
+.pf-card:hover .pf-img img{filter:grayscale(0);transform:scale(1.04)}
+.pf-flag{
+  height:168px;display:flex;align-items:center;justify-content:center;
+  font-size:56px;background:var(--bg-elevated);
+}
+.pf-body{padding:20px 19px}
+.pf-tag{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:8px;
+}
+.pf-name{font-family:var(--serif);font-size:20px;font-weight:500;margin-bottom:3px}
+.pf-region{font-size:13px;color:var(--text-muted);font-style:italic;margin-bottom:15px}
+.pf-row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid var(--border);font-size:12.5px}
+.pf-row span:first-child{color:var(--text-muted)}
+.pf-row span:last-child{color:var(--text);text-align:right}
+
+/* ---------- method ---------- */
+.method{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+@media(max-width:800px){.method{grid-template-columns:1fr}}
+.m-step{background:var(--bg-card);padding:30px 28px}
+.m-i{font-family:var(--serif);font-size:15px;font-style:italic;color:var(--accent);margin-bottom:12px}
+.m-t{font-size:18px;font-weight:500;color:var(--text);margin-bottom:10px}
+.m-d{font-size:14.5px;color:var(--text-muted);line-height:1.7}
+
+/* ---------- timeline ---------- */
+.tl{border-top:1px solid var(--border)}
+.tl-row{
+  display:grid;grid-template-columns:150px 1fr 190px;gap:26px;
+  padding:20px 0;border-bottom:1px solid var(--border);align-items:baseline;
+}
+@media(max-width:760px){
+  .tl-row{grid-template-columns:1fr;gap:5px;padding:16px 0}
+  .tl-when{order:-1}
+}
+.tl-when{font-family:var(--mono);font-size:12.5px;color:var(--text-muted);font-variant-numeric:tabular-nums}
+.tl-what strong{font-size:16.5px;font-weight:500;color:var(--text);display:block;margin-bottom:3px}
+.tl-what span{font-size:14.5px;color:var(--text-muted)}
+.tl-where{font-size:13.5px;color:var(--text-muted);text-align:right}
+@media(max-width:760px){.tl-where{text-align:left}}
+
+/* ---------- writing ---------- */
+.wr{border-top:1px solid var(--border)}
+.wr-row{
+  display:grid;grid-template-columns:110px 1fr;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--border);
+}
+@media(max-width:620px){.wr-row{grid-template-columns:1fr;gap:6px}}
+.wr-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--text-muted);padding-top:4px}
+.wr-t{font-size:17px;font-weight:400;color:var(--text);margin-bottom:4px;line-height:1.4}
+.wr-d{font-size:14.5px;color:var(--text-muted);line-height:1.6}
+.wr-empty{
+  border:1px dashed var(--border);padding:26px 24px;
+  font-size:15px;color:var(--text-muted);text-align:center;margin-top:22px;
+}
+
+/* ---------- contact ---------- */
+.contact{background:var(--bg-card);border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin-top:36px}
+@media(max-width:760px){.contact-grid{grid-template-columns:1fr}}
+.c-card{background:var(--bg-card);padding:34px 32px}
+.c-for{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.c-h{font-family:var(--serif);font-size:23px;font-weight:500;margin-bottom:12px}
+.c-p{font-size:15px;color:var(--text-muted);margin-bottom:22px;line-height:1.7}
+.c-cta{font-size:15px;font-weight:500}
+
+.quote{
+  font-family:var(--serif);font-size:clamp(20px,3vw,27px);font-weight:400;
+  font-style:italic;color:var(--text-secondary);line-height:1.55;
+  max-width:24ch;
+}
+.quote-by{font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-top:18px;letter-spacing:.08em}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--border);padding:34px 0 46px}
+.foot{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+.foot-l{font-family:var(--mono);font-size:12px;color:var(--text-muted)}
+.foot-links{display:flex;gap:20px;font-size:13.5px}
+.foot-links a{color:var(--text-muted)}
+.foot-links a:hover{color:var(--accent);text-decoration:none}
+.disclaimer{
+  margin-top:24px;font-size:12.5px;color:var(--text-muted);
+  line-height:1.65;max-width:76ch;opacity:.8;
+}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <div class="topnav-name"><a href="#top">Saurabh Kurjekar</a></div>
+    <div class="topnav-links">
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#track-record">Track record</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="kicker">Data Science &nbsp;·&nbsp; Real Estate</p>
+      <h1>I underwrite houses the way I build models.</h1>
+      <p class="hero-lead">Senior Data Scientist at <strong>Meta</strong>. Thirteen years of applied machine learning across Meta, Amazon, Uber and Realtor.com — and an <strong>eleven-door rental portfolio</strong> across four markets built alongside it.</p>
+      <!-- TODO: confirm door count and market count -->
+      <p class="hero-sub">I spent four years inside the data infrastructure of the largest housing marketplace in the United States. Now I use the same toolkit on my own balance sheet, and I write about what the numbers actually say.</p>
+      <div class="hero-actions">
+        <a class="btn btn-solid" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#portfolio">See the portfolio</a>
+      </div>
+      <div class="hero-social">
+        <a href="https://www.linkedin.com/in/saurabh-kurjekar">LinkedIn</a>
+        <a href="https://github.com/skurjekar">GitHub</a>
+        <!-- TODO: add X/Twitter, or delete this comment -->
+        <a href="mailto:saurabhkurjekar234@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="images/profile_cropped.jpg" alt="Saurabh Kurjekar">
+    </div>
+  </div>
+</header>
+
+<!-- ================= STATS ================= -->
+<div class="stats">
+  <div class="stat"><div class="stat-v">13</div><div class="stat-l">Years in<br>data science &amp; AI</div></div>
+  <div class="stat"><div class="stat-v">11</div><div class="stat-l">Doors owned<br>across 4 markets</div></div>
+  <div class="stat"><div class="stat-v">7</div><div class="stat-l">Years investing<br>in residential</div></div>
+  <div class="stat"><div class="stat-v">200+</div><div class="stat-l">Experiments shipped<br>on housing search</div></div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">About</p>
+      <h2>A quant who owns the rent roll</h2>
+    </div>
+    <div class="about-grid">
+      <div class="prose">
+        <p>There are a great many real estate investors who have never built a model, and a great many data scientists who have never signed a lease. I sit in the narrow overlap, and it shapes everything about how I operate.</p>
+        <p>For nearly four years I led data science for the mobile experience at <strong>Realtor.com</strong>, running more than two hundred experiments on how Americans actually search for a place to live. That work gave me an unusually direct view of housing demand — not the version in the headlines, but the version in the clickstream.</p>
+        <p>I now build LLM and machine learning systems at <strong>Meta</strong>, after doing the same at Amazon on fulfillment network design, at Uber on a $100M fleet incentive program, and at Ola where I established the analytics function for one of India's largest ride-hailing markets.</p>
+        <p>Alongside all of it I've been buying and operating residential property since 2019 — long-term rentals in Ohio and Florida, a short-term rental in the Yosemite gateway, and residential holdings in India. Every acquisition goes through the same discipline I'd apply to a production model: <strong>price the risk deliberately, underwrite on evidence rather than narrative, and stress-test before you bid.</strong></p>
+        <p>I partner with operators and allocators who value data, transparency, and a long time horizon.</p>
+      </div>
+      <aside class="factbox">
+        <div class="factbox-t">At a glance</div>
+        <div class="fact-row"><span class="fact-k">Current</span><span class="fact-v">Senior Data Scientist, Meta</span></div>
+        <div class="fact-row"><span class="fact-k">Previously</span><span class="fact-v">Amazon · Realtor.com<br>Uber · Experian · Ola</span></div>
+        <div class="fact-row"><span class="fact-k">Education</span><span class="fact-v">Purdue University<br>VNIT Nagpur</span></div>
+        <div class="fact-row"><span class="fact-k">Based</span><span class="fact-v">San Francisco, CA</span></div>
+        <div class="fact-row"><span class="fact-k">Markets</span><span class="fact-v">Ohio · California<br>Florida · India</span></div>
+        <div class="fact-row"><span class="fact-k">Strategy</span><span class="fact-v">Long-term &amp; short-term rental</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHOD ================= -->
+<section class="sec-line">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Method</p>
+      <h2>How every deal gets evaluated</h2>
+      <p class="sec-note">The same quantitative discipline I use to ship production machine learning, translated into underwriting.</p>
+    </div>
+    <div class="method">
+      <div class="m-step">
+        <div class="m-i">i.</div>
+        <div class="m-t">Market selection</div>
+        <div class="m-d">Submarket scoring across rent growth, vacancy, the supply pipeline, and job diversification — drawn from Census permits, Zillow rent indices, and BLS employment data. The aim is to enter a cycle early rather than follow consensus into it.</div>
+      </div>
+      <div class="m-step">
+        <div class="m-i">ii.</div>
+        <div class="m-t">Deal underwriting</div>
+        <div class="m-d">Probabilistic cash-flow modeling with explicit sensitivity on rents, CapEx, financing, and exit. Every deal is stress-tested by simulation before a number goes on paper — including the scenarios I'd rather not think about.</div>
+      </div>
+      <div class="m-step">
+        <div class="m-i">iii.</div>
+        <div class="m-t">Operating edge</div>
+        <div class="m-d">Ongoing performance tracking against the original underwriting, data-driven pricing for the short-term rental, and CapEx sequenced by return rather than urgency. Most of the compounding happens after the close.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section id="portfolio" class="sec-line">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Portfolio</p>
+      <h2>Four markets, one framework</h2>
+      <p class="sec-note">A diversified footprint across US cash-flow markets, a destination short-term rental, and international exposure — each selected through the same underwriting discipline. Markets are named; specific addresses are not, out of respect for tenant privacy.</p>
+    </div>
+    <div class="pf-grid">
+
+      <article class="pf-card">
+        <div class="pf-img"><img src="images/cleveland.jpg" alt="Cleveland Heights, Ohio multifamily property" loading="lazy"></div>
+        <div class="pf-body">
+          <div class="pf-tag">Market I</div>
+          <div class="pf-name">Cleveland Heights</div>
+          <div class="pf-region">Ohio · Midwest</div>
+          <div class="pf-row"><span>Type</span><span>Multifamily</span></div>
+          <div class="pf-row"><span>Strategy</span><span>Long-term rental</span></div>
+          <div class="pf-row"><span>Thesis</span><span>Cash flow · Value-add</span></div>
+        </div>
+      </article>
+
+      <article class="pf-card">
+        <div class="pf-img"><img src="images/mariposa_main.jpg" alt="Mariposa, California short-term rental near Yosemite" loading="lazy"></div>
+        <div class="pf-body">
+          <div class="pf-tag">Market II</div>
+          <div class="pf-name">Mariposa</div>
+          <div class="pf-region">California · Yosemite gateway</div>
+          <div class="pf-row"><span>Type</span><span>Single-family</span></div>
+          <div class="pf-row"><span>Strategy</span><span>Short-term rental</span></div>
+          <div class="pf-row"><span>Thesis</span><span>Destination yield</span></div>
+        </div>
+      </article>
+
+      <article class="pf-card">
+        <div class="pf-img"><img src="images/miami.jpg" alt="Miami, Florida multifamily property" loading="lazy"></div>
+        <div class="pf-body">
+          <div class="pf-tag">Market III</div>
+          <div class="pf-name">Miami</div>
+          <div class="pf-region">Florida · Southeast</div>
+          <div class="pf-row"><span>Type</span><span>Multifamily</span></div>
+          <div class="pf-row"><span>Strategy</span><span>Long-term rental</span></div>
+          <div class="pf-row"><span>Thesis</span><span>Growth market · Income</span></div>
+        </div>
+      </article>
+
+      <article class="pf-card">
+        <div class="pf-flag" role="img" aria-label="India">🇮🇳</div>
+        <div class="pf-body">
+          <div class="pf-tag">Market IV</div>
+          <div class="pf-name">India</div>
+          <div class="pf-region">International exposure</div>
+          <div class="pf-row"><span>Type</span><span>Residential</span></div>
+          <div class="pf-row"><span>Strategy</span><span>Buy &amp; hold</span></div>
+          <div class="pf-row"><span>Thesis</span><span>FX · Growth hedge</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TRACK RECORD ================= -->
+<section id="track-record" class="sec-line">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Track record</p>
+      <h2>Thirteen years of applied data science</h2>
+    </div>
+    <div class="tl">
+
+      <div class="tl-row">
+        <div class="tl-when">2026 — present</div>
+        <div class="tl-what"><strong>Meta</strong><span>Senior Data Scientist</span></div>
+        <div class="tl-where">Menlo Park, CA</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2025 — 2026</div>
+        <div class="tl-what"><strong>Amazon</strong><span>Senior Data Scientist, L6 — LLM systems for fulfillment center design; network flow prediction at scale</span></div>
+        <div class="tl-where">Seattle, WA</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2021 — 2025</div>
+        <div class="tl-what"><strong>Realtor.com</strong><span>Staff Data Scientist — led DS for the mobile experience; 200+ experiments; built an LLM-powered natural-language data tool recognised by the CTO</span></div>
+        <div class="tl-where">San Francisco Bay Area</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2019 — 2021</div>
+        <div class="tl-what"><strong>Uber</strong><span>Data Scientist — ran a $7M/month fleet incentives budget across 600+ US markets; $100M+ deployed; +8% weekly active fleet</span></div>
+        <div class="tl-where">San Francisco, CA</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2018 — 2019</div>
+        <div class="tl-what"><strong>Experian</strong><span>Data Scientist</span></div>
+        <div class="tl-where">Indianapolis, IN</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2016 — 2017</div>
+        <div class="tl-what"><strong>Ola</strong><span>Senior Data Scientist — established the analytics division for the company's 7th largest city by revenue; behavioural pricing work saving ~₹4.8M monthly</span></div>
+        <div class="tl-where">Pune, India</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2013 — 2016</div>
+        <div class="tl-what"><strong>Mu Sigma</strong><span>Data Scientist — retail and CPG analytics for The Home Depot and Kimberly-Clark</span></div>
+        <div class="tl-where">Bangalore, India</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2017 — 2018</div>
+        <div class="tl-what"><strong>Purdue University</strong><span>MS, Business Analytics</span></div>
+        <div class="tl-where">West Lafayette, IN</div>
+      </div>
+
+      <div class="tl-row">
+        <div class="tl-when">2009 — 2013</div>
+        <div class="tl-what"><strong>VNIT Nagpur</strong><span>B.Tech, Civil Engineering</span></div>
+        <div class="tl-where">Nagpur, India</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WRITING ================= -->
+<section id="writing" class="sec-line">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Writing</p>
+      <h2>What the housing data actually says</h2>
+      <p class="sec-note">Analysis on rental markets, underwriting, and applied machine learning. Most of it starts as a post on <a href="https://www.linkedin.com/in/saurabh-kurjekar">LinkedIn</a>.</p>
+    </div>
+
+    <!-- TODO: replace these three placeholders with real posts as you publish.
+         Keep the newest at the top. Delete .wr-empty once you have three. -->
+    <div class="wr">
+      <div class="wr-row">
+        <div class="wr-tag">Teardown</div>
+        <div>
+          <div class="wr-t">Rent growth versus the permit pipeline across the top 50 metros</div>
+          <div class="wr-d">Which markets are about to be oversupplied, using Census building permits against Zillow rent indices.</div>
+        </div>
+      </div>
+      <div class="wr-row">
+        <div class="wr-tag">Portfolio</div>
+        <div>
+          <div class="wr-t">Every dollar of 2026 CapEx across eleven doors, by category</div>
+          <div class="wr-d">The line items nobody puts in a pro forma, and what they actually cost me.</div>
+        </div>
+      </div>
+      <div class="wr-row">
+        <div class="wr-tag">Method</div>
+        <div>
+          <div class="wr-t">How I underwrite a house in twenty minutes with four free data sources</div>
+          <div class="wr-d">The screen I run before I'll spend real time on a listing.</div>
+        </div>
+      </div>
+    </div>
+    <div class="wr-empty">More analysis published regularly. Follow along on <a href="https://www.linkedin.com/in/saurabh-kurjekar">LinkedIn</a>.</div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Contact</p>
+      <h2>Let's talk</h2>
+    </div>
+    <div class="quote">“Building a portfolio the way it should be built — with evidence, patience, and craft.”</div>
+    <div class="quote-by">— Saurabh Kurjekar</div>
+
+    <div class="contact-grid">
+      <div class="c-card">
+        <div class="c-for">For real estate</div>
+        <div class="c-h">Partner on a deal</div>
+        <div class="c-p">I work with operators, co-investors, and allocators in residential — long-term rental cash flow markets and destination short-term rentals. If you underwrite on evidence and think in decades, we'll get along.</div>
+        <div class="c-cta"><a href="mailto:saurabhkurjekar234@gmail.com?subject=Real%20estate%20—%20partnering">saurabhkurjekar234@gmail.com &nbsp;→</a></div>
+      </div>
+      <div class="c-card">
+        <div class="c-for">For tech</div>
+        <div class="c-h">Talk shop, or speak</div>
+        <div class="c-p">Happy to talk about applied ML, experimentation at consumer scale, LLM tooling for data teams, or the data side of proptech. Available for podcasts, panels, and guest lectures.</div>
+        <div class="c-cta"><a href="https://www.linkedin.com/in/saurabh-kurjekar">Message me on LinkedIn &nbsp;→</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-l">© 2026 Saurabh Kurjekar · San Francisco, CA</div>
+      <div class="foot-links">
+        <a href="https://www.linkedin.com/in/saurabh-kurjekar">LinkedIn</a>
+        <a href="https://github.com/skurjekar">GitHub</a>
+        <a href="mailto:saurabhkurjekar234@gmail.com">Email</a>
+      </div>
+    </div>
+    <p class="disclaimer">Views expressed here are my own and do not represent those of my employer. Nothing on this site is investment advice — I share what I did, not what you should do. Real estate involves risk, including loss of principal, and past performance does not indicate future results.</p>
+  </div>
+</footer>
+
+</body>
+</html>
