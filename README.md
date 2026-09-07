@@ -6,10 +6,10 @@ Single-page personal site. No build step, no dependencies — one `index.html` p
 
 Search the file for `TODO`. Five items:
 
-1. **Door / market count** — hero and stats say 11 doors across 4 markets. Your deck said 4 assets. Pick the true number and use it everywhere.
+1. **Unit count** — hero and stats say 12 units across 4 markets. Keep this consistent with your LinkedIn and investor deck.
 2. **Contact email** — currently `saurabhkurjekar234@gmail.com`. Consider a dedicated address.
 3. **X/Twitter** — no link included. Add one or leave it out.
-4. **Writing section** — three placeholder entries. Replace with real posts as you publish them.
+4. **Calendly** — `calendly.com/saurabhkurjekar234`, linked from the hero button and both contact cards.
 5. **Returns** — this file deliberately contains **no** financial returns. Add only numbers you'd defend in a due-diligence call.
 
 ## Deploy to GitHub Pages
