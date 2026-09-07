@@ -190,10 +190,8 @@ h2{
 .pf-img{height:168px;overflow:hidden;background:var(--bg-elevated)}
 .pf-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(22%);transition:filter .4s,transform .4s}
 .pf-card:hover .pf-img img{filter:grayscale(0);transform:scale(1.04)}
-.pf-flag{
-  height:168px;display:flex;align-items:center;justify-content:center;
-  font-size:56px;background:var(--bg-elevated);
-}
+.pf-plan{height:168px;overflow:hidden;background:var(--bg-elevated)}
+.pf-plan svg{width:100%;height:100%;display:block}
 .pf-body{padding:20px 19px}
 .pf-tag{
   font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;
@@ -244,8 +242,8 @@ h2{
 
 .quote{
   font-family:var(--serif);font-size:clamp(20px,3vw,27px);font-weight:400;
-  font-style:italic;color:var(--text-secondary);line-height:1.55;
-  max-width:24ch;
+  font-style:italic;color:var(--text-secondary);line-height:1.5;
+  max-width:34ch;
 }
 .quote-by{font-family:var(--mono);font-size:12px;color:var(--text-muted);margin-top:18px;letter-spacing:.08em}
 
@@ -416,7 +414,23 @@ footer{border-top:1px solid var(--border);padding:34px 0 46px}
       </article>
 
       <article class="pf-card">
-        <div class="pf-flag" role="img" aria-label="India">🇮🇳</div>
+        <div class="pf-plan">
+          <svg viewBox="0 0 300 168" role="img" aria-label="Site plan: three apartment units and two land parcels" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M20 0H0V20" fill="none" stroke="#c9a96e" stroke-width="0.5" stroke-opacity="0.10"/>
+              </pattern>
+            </defs>
+            <rect width="300" height="168" fill="url(#grid)"/>
+            <!-- 2 land parcels: outlined -->
+            <rect x="24" y="26" width="94" height="60" fill="none" stroke="#c9a96e" stroke-opacity="0.55" stroke-width="1.25" stroke-dasharray="4 3"/>
+            <rect x="24" y="98" width="94" height="46" fill="none" stroke="#c9a96e" stroke-opacity="0.55" stroke-width="1.25" stroke-dasharray="4 3"/>
+            <!-- 3 apartment units: filled -->
+            <rect x="150" y="26" width="126" height="34" fill="#c9a96e" fill-opacity="0.22" stroke="#c9a96e" stroke-opacity="0.65" stroke-width="1"/>
+            <rect x="150" y="70" width="126" height="34" fill="#c9a96e" fill-opacity="0.22" stroke="#c9a96e" stroke-opacity="0.65" stroke-width="1"/>
+            <rect x="150" y="114" width="126" height="34" fill="#c9a96e" fill-opacity="0.22" stroke="#c9a96e" stroke-opacity="0.65" stroke-width="1"/>
+          </svg>
+        </div>
         <div class="pf-body">
           <div class="pf-tag">Market IV</div>
           <div class="pf-name">India</div>
@@ -505,23 +519,23 @@ footer{border-top:1px solid var(--border);padding:34px 0 46px}
       <p class="kicker">Contact</p>
       <h2>Let's talk</h2>
     </div>
-    <div class="quote">“Building a portfolio the way it should be built — with evidence, patience, and craft.”</div>
+    <div class="quote">“In both machine learning and real estate, standard play yields standard returns. You have to optimize for the edge.”</div>
     <div class="quote-by">— Saurabh Kurjekar</div>
 
     <div class="contact-grid">
-      <div class="c-card">
-        <div class="c-for">For real estate</div>
-        <div class="c-h">Partner on a deal</div>
-        <div class="c-p">I work with operators, co-investors, and allocators in residential — long-term rental cash flow markets and destination short-term rentals. If you underwrite on evidence and think in decades, we'll get along.</div>
-        <div class="c-cta"><a href="https://calendly.com/saurabhkurjekar234/30min" target="_blank" rel="noopener">Book time on my calendar &nbsp;→</a></div>
-        <div class="c-alt"><a href="mailto:saurabhkurjekar234@gmail.com?subject=Real%20estate%20—%20partnering">or email me directly</a></div>
-      </div>
       <div class="c-card">
         <div class="c-for">For tech</div>
         <div class="c-h">Talk shop, or speak</div>
         <div class="c-p">Happy to talk about applied ML, experimentation at consumer scale, LLM tooling for data teams, or the data side of proptech. Available for podcasts, panels, and guest lectures.</div>
         <div class="c-cta"><a href="https://calendly.com/saurabhkurjekar234/30min" target="_blank" rel="noopener">Book time on my calendar &nbsp;→</a></div>
         <div class="c-alt"><a href="https://www.linkedin.com/in/saurabh-kurjekar">or message me on LinkedIn</a></div>
+      </div>
+      <div class="c-card">
+        <div class="c-for">For real estate</div>
+        <div class="c-h">Partner on a deal</div>
+        <div class="c-p">I work with operators, co-investors, and allocators in residential — long-term rental cash flow markets and destination short-term rentals. If you underwrite on evidence and think in decades, we'll get along.</div>
+        <div class="c-cta"><a href="https://calendly.com/saurabhkurjekar234/30min" target="_blank" rel="noopener">Book time on my calendar &nbsp;→</a></div>
+        <div class="c-alt"><a href="mailto:saurabhkurjekar234@gmail.com?subject=Real%20estate%20—%20partnering">or email me directly</a></div>
       </div>
     </div>
   </div>
