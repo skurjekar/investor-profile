@@ -12,52 +12,22 @@ Search the file for `TODO`. Five items:
 4. **Calendly** — `calendly.com/saurabhkurjekar234`, linked from the hero button and both contact cards.
 5. **Returns** — this file deliberately contains **no** financial returns. Add only numbers you'd defend in a due-diligence call.
 
-## Deploy to GitHub Pages
+## Status — LIVE
 
-The `investor-profile` repo is currently empty, so this is a clean first push.
+- **https://saurabhkurjekar.com** (apex, HTTPS enforced)
+- `www.saurabhkurjekar.com` → 301 → apex
+- `skurjekar.github.io/investor-profile/` → 301 → apex
+- Hosted free on GitHub Pages from `skurjekar/investor-profile`, branch `main`, root.
+- Domain at Cloudflare Registrar, auto-renew on, expires 7 Sep 2027.
+- TLS: Let's Encrypt, auto-renewing, covers apex + www.
+- DNS: 4 A records (185.199.108–111.153) + `www` CNAME, all **DNS only** (grey cloud).
+  Do not enable the Cloudflare proxy — it breaks GitHub's certificate renewal.
+
+## To publish a change
 
 ```bash
 cd website
-git init
-git add -A
-git commit -m "Personal site"
-git branch -M main
-git remote add origin https://github.com/skurjekar/investor-profile.git
-git push -u origin main
+git add -A && git commit -m "..." && git push
 ```
 
-Then in the repo: **Settings → Pages → Source: `main`, folder `/ (root)`**.
-
-Live within a minute or two at `https://skurjekar.github.io/investor-profile/`.
-
-## Point a custom domain at it
-
-Do this **before** you enable the LinkedIn custom button — that button may not be re-addable once removed, so it should point at a URL you will never need to change.
-
-1. Buy `saurabhkurjekar.com`.
-2. Add a `CNAME` file to this directory containing exactly:
-   ```
-   saurabhkurjekar.com
-   ```
-3. At your DNS provider, add four `A` records for the apex pointing to GitHub Pages:
-   ```
-   185.199.108.153
-   185.199.109.153
-   185.199.110.153
-   185.199.111.153
-   ```
-   And a `CNAME` record for `www` → `skurjekar.github.io`.
-4. Back in **Settings → Pages**, set the custom domain and tick **Enforce HTTPS** once the certificate provisions.
-
-## Local preview
-
-```bash
-python3 -m http.server 8000
-# http://localhost:8000
-```
-
-## Notes
-
-- Design language matches the existing `re-investor-deck` (Playfair Display / Inter, brass `#c9a96e` on charcoal) so the site and the deck read as one brand.
-- Property **markets** are named; addresses are not. Keep it that way — tenant privacy, and it avoids handing strangers your parcels.
-- Footer carries an employer disclaimer and a not-investment-advice line. Don't remove them.
+Live within ~1 minute. Do not delete the `CNAME` file — it is what binds the domain.
